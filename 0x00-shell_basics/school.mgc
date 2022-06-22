@@ -1,2 +1,5 @@
-0	string		=SCHOOL		SCHOOL text
-!:mime	text/school
+0	string		   =SCHOOL        SCHOOL text
+!:mime	school
+0       string             =<?php         PHP text
+!:mime  text/x-php
+
