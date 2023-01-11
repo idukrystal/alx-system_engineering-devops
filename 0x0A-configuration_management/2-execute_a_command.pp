@@ -1,6 +1,5 @@
-# Using Puppet, install flask from pip3 
-
-package { 'flask':
-  ensure   => '2.1.0',
-  provider => 'pip3'
+# execute pkill command to kill bashscript file killmenow
+exec { 'pkill':
+  command => 'pkill -9 -f killmenow',
+  path    => ['/usr/bin', '/usr/sbin', '/bin']
 }
