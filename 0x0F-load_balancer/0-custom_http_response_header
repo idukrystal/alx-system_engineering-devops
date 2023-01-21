@@ -21,7 +21,7 @@ sudo sed -i "s/server_name crysart.tech www.crysart.tech;/$string_for_replacemen
 
 # add new costom header
 string_for_replacement="try_files $uri $uri/ =404;\n\n\t\tadd_header X-Served-By \$hostname;"
-sudo sed -i "s/try_files $uri $uri/ =404;/$string_for_replacement/"
+sudo sed -i "s/try_files $uri $uri/ =404;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
 # restart the server
 sudo service nginx restart
