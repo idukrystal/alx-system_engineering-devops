@@ -6,9 +6,7 @@ sudo ufw allow 'Nginx HTTP'
 sudo echo "Hello World!" > /var/www/html/index.html
 sudo service nginx start
 
-#Configure your Nginx server to have a custom 404 page that contains the string
-sudo apt-get update
-sudo apt-get install -y nginx
+#Configure your Nginx to have custom 404 page
 
 echo "Hello World!" | sudo tee /var/www/html/index.html
 string_for_replacement="server_name crysart.tech www.crysart.tech;\n\trewrite ^\/redirect_me https:\/\/www.google.com permanent;"
@@ -20,8 +18,8 @@ string_for_replacement="server_name crysart.tech www.crysart.tech;\n\n\terror_pa
 sudo sed -i "s/server_name crysart.tech www.crysart.tech;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
 # add new costom header
-string_for_replacement="try_files $uri $uri/ =404;\n\n\t\tadd_header X-Served-By \$hostname;"
-sudo sed -i "s/try_files \$uri \$uri/ =404;/$string_for_replacement/" /etc/nginx/sites-enabled/default
+string_for_replacement="try_files \$uri \$uri\/ =404;\n\n\t\tadd_header X-Served-By \$hostname;"
+sudo sed -i "s/try_files \$uri \$uri\/ =404;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
 # restart the server
 sudo service nginx restart
