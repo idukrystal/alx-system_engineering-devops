@@ -11,7 +11,7 @@ sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled
 # code to create error page and add a redirect for error 404
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 string_for_replacement="server_name crysart.tech www.crysart.tech;\n\n\terror_page 404 \/404.html;\n"
-sudo sed -i "s/server_name crysart.tech www.crysart.tech;/$string_for_replacement/" /etc/nginx/sites-enabled/default.conf
+sudo sed -i "s/server_name crysart.tech www.crysart.tech;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
 # restart the server
 sudo service nginx restart
