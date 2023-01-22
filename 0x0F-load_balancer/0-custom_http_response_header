@@ -3,7 +3,7 @@
 sudo apt-get update
 sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
-
+sudo service nginx start
 #Configure your Nginx to have custom 404 page
 
 echo "Hello World!" | sudo tee /var/www/html/index.html
@@ -20,4 +20,4 @@ string_for_replacement="try_files \$uri \$uri\/ =404;\n\n\t\tadd_header X-Served
 sudo sed -i "s/try_files \$uri \$uri\/ =404;/$string_for_replacement/" /etc/nginx/sites-enabled/default*
 
 # restart the server
-sudo service nginx start
+sudo service nginx restart
