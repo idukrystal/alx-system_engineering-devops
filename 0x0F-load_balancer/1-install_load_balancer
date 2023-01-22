@@ -11,7 +11,7 @@ server_config=\
 frontend  crysart-frontend
         bind *:80
 	mode http
-	default_backend crusart-backend
+	default_backend crysart-backend
 backend crysart-backend
 	balance roundrobin
         server 94251-web-01 3.89.155.51  check
