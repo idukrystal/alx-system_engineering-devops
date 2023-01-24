@@ -5,14 +5,16 @@ get_sub_info () {
     url=$2.$1
     echo -n "The subdomain $2"
     dig $url |
-        grep -A1 'ANSWER SECTION:'  |
-            awk '/^[^;]/ { print " is a "$4" record and points to "$5 }'
+	grep -A1 'ANSWER SECTION:'  |
+	awk '/^[^;]/ { print " is a "$4" record and points to "$5 }'
 }
 
 if [ $2 ]
 then
     get_sub_info $1 $2
 else
-    get_sub_info $1 www                                                         get_sub_info $1 lb-01                                                       get_sub_info $1 web-01
+    get_sub_info $1 www
+    get_sub_info $1 lb-01
+    get_sub_info $1 web-01
     get_sub_info $1 web-02
 fi
