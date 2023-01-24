@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#Read the string value
+echo "Enter book name, author name and price by separating comma. "
+read text
+
+# Set comma as delimiter
+IFS=','
+
+#Read the split words into an array based on comma delimiter
+read -a strarr <<< "$text"
+
+#Print the splitted words
+echo "Book Name : ${strarr[0]}"
+echo "Author Name : ${strarr[1]}"
+echo "Price : ${strarr[2]}"
