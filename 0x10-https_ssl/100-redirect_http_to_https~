@@ -1,0 +1,16 @@
+frontend  crysart-fronten
+	bind *:80
+	mode http
+	default_backend crysart-backend
+backend   crysart-backend
+	mode http
+	balance roundrobin
+	server 94251-web-01 3.89.155.51:80  check
+	server 94251-web-02 100.26.169.4:80  check
+
+listen  crysart-secure
+	bind *:443 ssl crt /etc/letsencrypt/live/www.crysart.tech/fullchain.pem
+       	mode tcp
+       	balance roundrobin
+       	server 94251-web-01 3.89.155.51:80  check
+       	server 94251-web-02 100.26.169.4:80  check
