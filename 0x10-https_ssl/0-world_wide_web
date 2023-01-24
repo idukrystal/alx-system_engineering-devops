@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
 #Bash script that will display information about subdomains.
 
-IFS='.'
-read -a arr <<< $1
+get_sub_info () {
+    url=$2.$1
+    echo -n "The subdomain $2"
+    dig $url |
+        grep -A1 'ANSWER SECTION:'  |
+            awk '/^[^;]/ { print " is a "$4" record and points to "$5 }'
+}
 
-i=${#arr[*]}
-
-if [ $i == 3 ]
+if [ $2 ]
 then
-    sub=${arr[0]}
+    get_sub_info $1 $2
 else
-    sub=www
+    get_sub_info $1 www                                                         get_sub_info $1 lb-01                                                       get_sub_info $1 web-01
+    get_sub_info $1 web-02
 fi
-echo $sub
