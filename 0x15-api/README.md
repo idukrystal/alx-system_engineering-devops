@@ -1,0 +1,1 @@
+alx project on avoifing the use of badh scripts
